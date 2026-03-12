@@ -3,22 +3,21 @@
 [ext_resource type="Script" uid="uid://8gcibk664yfu" path="res://Scripts/main.gd" id="1_jjgbg"]
 [ext_resource type="Texture2D" uid="uid://b7pryepv60ctu" path="res://sprites/megaman.png" id="2_jjvhh"]
 [ext_resource type="Script" uid="uid://cvtfs4yhgcn6e" path="res://Scripts/megaman.gd" id="3_kry3j"]
-[ext_resource type="Script" uid="uid://dbnljyw7mljix" path="res://Scripts/pop_in_timer.gd" id="4_21xkr"]
+[ext_resource type="VideoStream" uid="uid://dygsrvcsh12si" path="res://sprites/SubwaySurfers.ogv" id="5_kry3j"]
 
 [node name="Main" type="Node2D" unique_id=1799835863]
 script = ExtResource("1_jjgbg")
 
 [node name="megaman" type="Sprite2D" parent="." unique_id=390750964]
-visible = false
+position = Vector2(903, 317)
+scale = Vector2(0.1404762, 0.11816065)
 texture = ExtResource("2_jjvhh")
+offset = Vector2(500, 500)
 script = ExtResource("3_kry3j")
 
-[node name="PopInTimer" type="Timer" parent="." unique_id=1357658120]
-wait_time = 4.0
-one_shot = true
-autostart = true
-script = ExtResource("4_21xkr")
-
 [node name="SubwaySurfersA" type="VideoStreamPlayer" parent="." unique_id=535759191]
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = -77.0
+offset_top = -71.0
+offset_right = -37.0
+offset_bottom = -31.0
+stream = ExtResource("5_kry3j")
