@@ -19,3 +19,4 @@ func _ready() -> void:
 	
 	#Force borderless
 	window.unresizable = false
+	

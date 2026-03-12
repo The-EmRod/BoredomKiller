@@ -1,6 +1,24 @@
 [gd_scene format=3 uid="uid://c61lscaa4p73q"]
 
 [ext_resource type="Script" uid="uid://8gcibk664yfu" path="res://Scripts/main.gd" id="1_jjgbg"]
+[ext_resource type="Texture2D" uid="uid://b7pryepv60ctu" path="res://sprites/megaman.png" id="2_jjvhh"]
+[ext_resource type="Script" uid="uid://cvtfs4yhgcn6e" path="res://Scripts/megaman.gd" id="3_kry3j"]
+[ext_resource type="Script" uid="uid://dbnljyw7mljix" path="res://Scripts/pop_in_timer.gd" id="4_21xkr"]
 
 [node name="Main" type="Node2D" unique_id=1799835863]
 script = ExtResource("1_jjgbg")
+
+[node name="megaman" type="Sprite2D" parent="." unique_id=390750964]
+visible = false
+texture = ExtResource("2_jjvhh")
+script = ExtResource("3_kry3j")
+
+[node name="PopInTimer" type="Timer" parent="." unique_id=1357658120]
+wait_time = 4.0
+one_shot = true
+autostart = true
+script = ExtResource("4_21xkr")
+
+[node name="SubwaySurfersA" type="VideoStreamPlayer" parent="." unique_id=535759191]
+offset_right = 40.0
+offset_bottom = 40.0
