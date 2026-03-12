@@ -1,6 +1,7 @@
 extends Node2D
 #Can be called to display megaman
 @onready var megaman = $megaman
+#Can be called to display subway surfers
 @onready var surfers = $SubwaySurfersA
 
 # Called when the node enters the scene tree for the first time.
