@@ -26,13 +26,9 @@ func _ready() -> void:
 #This function will call and alter the timer to display random
 #images or videos
 func _process(_delta: float) -> void:
-	var timeStamp : int = 2000
+	var timeStamp : int = 3000
 	var currentTime : int = Time.get_ticks_msec()
 	
-	if(currentTime <= timeStamp):
-		megaman.hide()
-	else:
-		megaman.show()
-	
-	if currentTime >= (timeStamp*2):
-		megaman.hide()
+	if(currentTime % timeStamp == 0):
+		var megaman2 = $megaman
+		megaman2.show()
