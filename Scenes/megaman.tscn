@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://bm016fycxphdq"]
+
+[ext_resource type="Texture2D" uid="uid://b7pryepv60ctu" path="res://sprites/megaman.png" id="1_kq748"]
+[ext_resource type="Script" uid="uid://dbcwtig6boqvm" path="res://Scenes/megaman.gd" id="2_bvf2y"]
+
+[node name="megaman" type="Sprite2D" unique_id=1064105250]
+visible = false
+scale = Vector2(0.1404762, 0.11816065)
+texture = ExtResource("1_kq748")
+script = ExtResource("2_bvf2y")

@@ -1,11 +1,13 @@
 extends Node2D
-#Can be called to display megaman
-@onready var megaman = $megaman
-#Can be called to display subway surfers
-@onready var surfers = $SubwaySurfersA
+#To preload the assets used in the code
+@onready var megaman_scene = preload("res://Scenes/megaman.tscn")
+var subway_scene = preload("res://sprites/SubwaySurfers.ogv")
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	#Pulled it from a Godot tutorial. Reminder text to post a link in READ-ME
+	
 	#Get access to the Operating System Window
 	var window = get_window()
 	
@@ -23,12 +25,7 @@ func _ready() -> void:
 	#Force borderless
 	window.unresizable = false
 	
-#This function will call and alter the timer to display random
-#images or videos
-func _process(_delta: float) -> void:
-	var timeStamp : int = 3000
-	var currentTime : int = Time.get_ticks_msec()
 	
-	if(currentTime % timeStamp == 0):
-		var megaman2 = $megaman
-		megaman2.show()
+#On timeout, invoke $megaman's create_ob method
+func _on_timer_timeout():
+	$megaman.create_ob(megaman_scene)
