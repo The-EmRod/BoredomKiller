@@ -39,24 +39,28 @@ func _ready() -> void:
 	#to be safe and make sure it isn't random just for me, so I'm keeping it.
 	randomize()
 
-
-func load_asset():
-	#Picks a random asset
-	var currentAsset = assetScene.pick_random().instantiate()
-	print(currentAsset) #Debugging
+func load_asset2():
+	#Sets a random asset and grabs the index
+	var randomAsset = assetScene.pick_random()
+	var index = assetScene.find(randomAsset)
 	
+	#grabs the path of assetPath from the index of what was randomly selected
+	var path = assetPath[index]
 	
-	
-	#sets random position
+	#Instantiates the asset
+	var currentAsset = randomAsset.instantiate()
+	#Sets position of the asset
 	currentAsset.position = Vector2(randi_range(0,screenSize.x),randi_range(0,screenSize.y))
-	print(currentAsset.position.x,currentAsset.position.y) #Debugging
 	
-	#Not really sure
-	add_child(currentAsset)
-	#Displays image or plays video
-	currentAsset.show()
-
+	add_child(currentAsset) #Someone needs to explain what this does to me I'm so lost
+	
+	#finds the file type of the path, then will either show() or play() depending on the file type
+	var extension = str(path).substr(str(path).find(".") + 1,3)
+	if(extension == "ogv"):
+		currentAsset.play()
+	else:
+		currentAsset.show()
 
 #On timeout, invoke load_asset
 func _on_timer_timeout() -> void:
-	load_asset()
+	load_asset2()

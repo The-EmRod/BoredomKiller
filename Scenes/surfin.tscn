@@ -5,4 +5,5 @@
 [node name="VideoStreamPlayer" type="VideoStreamPlayer" unique_id=922055421]
 offset_right = 40.0
 offset_bottom = 40.0
+scale = Vector2(0.2, 0.2)
 stream = ExtResource("1_p5b8a")
