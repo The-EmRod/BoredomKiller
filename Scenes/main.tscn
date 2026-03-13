@@ -7,6 +7,7 @@
 script = ExtResource("1_jjgbg")
 
 [node name="megaman" parent="." unique_id=1064105250 instance=ExtResource("2_bo1nx")]
+visible = true
 position = Vector2(903, 317)
 
 [node name="Timer" type="Timer" parent="." unique_id=1851245768]
