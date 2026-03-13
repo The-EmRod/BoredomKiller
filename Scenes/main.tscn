@@ -2,13 +2,20 @@
 
 [ext_resource type="Script" uid="uid://8gcibk664yfu" path="res://Scripts/main.gd" id="1_jjgbg"]
 [ext_resource type="PackedScene" uid="uid://bm016fycxphdq" path="res://Scenes/megaman.tscn" id="2_bo1nx"]
+[ext_resource type="PackedScene" uid="uid://btkhjvft2qxsh" path="res://Scenes/turbo.tscn" id="3_8gbba"]
+[ext_resource type="Texture2D" uid="uid://bia7iew56wj00" path="res://sprites/turbotastic.jpg" id="4_jjvhh"]
 
 [node name="Main" type="Node2D" unique_id=1799835863]
 script = ExtResource("1_jjgbg")
+
+[node name="Timer" type="Timer" parent="." unique_id=1851245768]
+autostart = true
 
 [node name="megaman" parent="." unique_id=1064105250 instance=ExtResource("2_bo1nx")]
 visible = true
 position = Vector2(903, 317)
 
-[node name="Timer" type="Timer" parent="." unique_id=1851245768]
-autostart = true
+[node name="turbo" parent="." unique_id=364278171 instance=ExtResource("3_8gbba")]
+texture = ExtResource("4_jjvhh")
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

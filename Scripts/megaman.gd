@@ -6,7 +6,6 @@ func _input(event):
 		if is_pixel_opaque(get_local_mouse_position()):
 			pass
 
-
 func create_ob(megaman_scene):
 	var megaman_instance = megaman_scene.instantiate()
 	megaman_instance.position = Vector2(randi() % 301,randi() % 301)

@@ -1,9 +1,7 @@
 extends Node2D
-#To preload the assets used in the code
-@onready var megaman_scene = preload("res://Scenes/megaman.tscn")
-
 #Will store the assets so that I can call them randomly
-var assets = [preload("res://Scenes/megaman.tscn")]
+var assets = [preload("res://Scenes/megaman.tscn"),preload("res://Scenes/turbo.tscn")]
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	#Pulled it from a Godot tutorial. Reminder text to post a link in READ-ME
@@ -25,13 +23,21 @@ func _ready() -> void:
 	#Force borderless
 	window.unresizable = false
 	
+	#Does not work. Causes errors
+	#I want to make it to where the images don't initially load on the screen
+	for n in assets:
+		assets.n.visible = false
+
 
 func load_asset():
-	var currentAsset = assets.pick_random()
-	currentAsset.instantiate()
+	#Picks a random asset
+	var currentAsset = assets.pick_random().instantiate()
+	#sets a random position
 	currentAsset.position = Vector2(randi() % 301,randi() % 301)
+	add_child(currentAsset)
 	currentAsset.show()
 
+
 #On timeout, invoke load_asset
-func _on_timer_timeout():
+func _on_timer_timeout() -> void:
 	load_asset()
