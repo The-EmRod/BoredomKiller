@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://bdfchisky1mep"]
+
+[ext_resource type="VideoStream" uid="uid://dygsrvcsh12si" path="res://sprites/SubwaySurfers.ogv" id="1_p5b8a"]
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" unique_id=922055421]
+offset_right = 40.0
+offset_bottom = 40.0
+stream = ExtResource("1_p5b8a")

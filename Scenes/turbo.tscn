@@ -1,3 +1,7 @@
 [gd_scene format=3 uid="uid://btkhjvft2qxsh"]
 
+[ext_resource type="Texture2D" uid="uid://bia7iew56wj00" path="res://sprites/turbotastic.jpg" id="1_wvpvt"]
+
 [node name="turbo" type="Sprite2D" unique_id=364278171]
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("1_wvpvt")

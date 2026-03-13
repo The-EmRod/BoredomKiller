@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://8gcibk664yfu" path="res://Scripts/main.gd" id="1_jjgbg"]
 [ext_resource type="PackedScene" uid="uid://bm016fycxphdq" path="res://Scenes/megaman.tscn" id="2_bo1nx"]
 [ext_resource type="PackedScene" uid="uid://btkhjvft2qxsh" path="res://Scenes/turbo.tscn" id="3_8gbba"]
-[ext_resource type="Texture2D" uid="uid://bia7iew56wj00" path="res://sprites/turbotastic.jpg" id="4_jjvhh"]
+[ext_resource type="PackedScene" uid="uid://bdfchisky1mep" path="res://Scenes/surfin.tscn" id="4_jjvhh"]
 
 [node name="Main" type="Node2D" unique_id=1799835863]
 script = ExtResource("1_jjgbg")
@@ -12,12 +12,16 @@ script = ExtResource("1_jjgbg")
 autostart = true
 
 [node name="megaman" parent="." unique_id=1064105250 instance=ExtResource("2_bo1nx")]
-visible = true
 position = Vector2(579, -218)
 
 [node name="turbo" parent="." unique_id=364278171 instance=ExtResource("3_8gbba")]
-position = Vector2(312, -252)
-scale = Vector2(0.30361447, 0.3010204)
-texture = ExtResource("4_jjvhh")
+position = Vector2(579, -252)
+
+[node name="VideoStreamPlayer" parent="." unique_id=922055421 instance=ExtResource("4_jjvhh")]
+offset_left = 60.999996
+offset_top = -529.99994
+offset_right = 1141.0
+offset_bottom = 1810.0
+scale = Vector2(0.2, 0.2)
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

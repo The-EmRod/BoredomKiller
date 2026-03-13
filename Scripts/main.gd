@@ -1,8 +1,16 @@
 extends Node2D
-#Will store the assets so that I can call them randomly
-var assets = [preload("res://Scenes/megaman.tscn"),preload("res://Scenes/turbo.tscn")]
+#Will store the asset scenes so that I can call them randomly
+var assetScene = [preload("res://Scenes/megaman.tscn"),preload("res://Scenes/turbo.tscn"),
+preload("res://Scenes/surfin.tscn")]
 
-#I want the size of the screen so that the images will on the window
+#This is really just to store the paths of the assets so that I can call either the play() or show() function
+#depending on the type of file
+var assetPath = [preload("res://sprites/megaman.png"),preload("res://sprites/turbotastic.jpg"),
+preload("res://sprites/SubwaySurfers.ogv")]
+
+
+
+#I want the size of the screen so that the images will only spawn on the window
 @onready var screenSize = get_viewport().get_visible_rect().size
 
 
@@ -27,18 +35,25 @@ func _ready() -> void:
 	#Force borderless
 	window.unresizable = false
 	
+	#I noticed that, without randomize, it still did what I wanted, but I wanted
+	#to be safe and make sure it isn't random just for me, so I'm keeping it.
+	randomize()
 
 
 func load_asset():
 	#Picks a random asset
-	var currentAsset = assets.pick_random().instantiate()
+	var currentAsset = assetScene.pick_random().instantiate()
+	print(currentAsset) #Debugging
+	
+	
 	
 	#sets random position
 	currentAsset.position = Vector2(randi_range(0,screenSize.x),randi_range(0,screenSize.y))
+	print(currentAsset.position.x,currentAsset.position.y) #Debugging
 	
 	#Not really sure
 	add_child(currentAsset)
-	#Displays image
+	#Displays image or plays video
 	currentAsset.show()
 
 
