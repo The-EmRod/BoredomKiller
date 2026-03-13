@@ -2,6 +2,10 @@ extends Node2D
 #Will store the assets so that I can call them randomly
 var assets = [preload("res://Scenes/megaman.tscn"),preload("res://Scenes/turbo.tscn")]
 
+#I want the size of the screen so that the images will on the window
+@onready var screenSize = get_viewport().get_visible_rect().size
+
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	#Pulled it from a Godot tutorial. Reminder text to post a link in READ-ME
@@ -23,18 +27,18 @@ func _ready() -> void:
 	#Force borderless
 	window.unresizable = false
 	
-	#Does not work. Causes errors
-	#I want to make it to where the images don't initially load on the screen
-	for n in assets:
-		assets.n.visible = false
 
 
 func load_asset():
 	#Picks a random asset
 	var currentAsset = assets.pick_random().instantiate()
-	#sets a random position
-	currentAsset.position = Vector2(randi() % 301,randi() % 301)
+	
+	#sets random position
+	currentAsset.position = Vector2(randi_range(0,screenSize.x),randi_range(0,screenSize.y))
+	
+	#Not really sure
 	add_child(currentAsset)
+	#Displays image
 	currentAsset.show()
 
 
