@@ -9,21 +9,26 @@ var assetPath = [preload("res://sprites/megaman.png"),preload("res://sprites/tur
 preload("res://sprites/SubwaySurfers.ogv")]
 
 
-
 #I want the size of the screen so that the images will only spawn on the window
 @onready var screenSize = get_viewport().get_visible_rect().size
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	#Pulled it from a Godot tutorial. Reminder text to post a link in READ-ME
+	initialize_window()
 	
-	#Get access to the Operating System Window
-	var window = get_window()
+	#I noticed that, without randomize, it still did what I wanted, but I wanted
+	#to be safe and make sure it isn't random just for me, so I'm keeping it.
+	randomize()
+
+func initialize_window() -> void:
+	#Pulled it from a Godot tutorial. Reminder text to post a link in READ-ME
+	var window : Window = get_window()
+	window.size = Vector2i(DisplayServer.screen_get_size() + Vector2i(1,1))
+	window.position = DisplayServer.screen_get_position()
 	
 	#1. Transparency setup
-	get_viewport().transparent_bg = true
-	window.transparent = true
+	get_tree().get_root().set_transparent_background(true)
 	
 	#2. Window shape
 	#We want to remove the borders, so everything looks like it's floating
@@ -35,9 +40,16 @@ func _ready() -> void:
 	#Force borderless
 	window.unresizable = false
 	
-	#I noticed that, without randomize, it still did what I wanted, but I wanted
-	#to be safe and make sure it isn't random just for me, so I'm keeping it.
-	randomize()
+	#To set window passthrough
+	var pseudoWindow = PackedVector2Array(
+	[
+		Vector2(-1,-1),
+		Vector2(-1,1),
+		Vector2(1,-1),
+		Vector2(1,1)
+	])
+	DisplayServer.window_set_mouse_passthrough(pseudoWindow)
+
 
 func load_asset2():
 	#Sets a random asset and grabs the index
