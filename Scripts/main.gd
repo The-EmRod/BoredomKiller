@@ -8,11 +8,6 @@ preload("res://Scenes/surfin.tscn")]
 var assetPath = [preload("res://sprites/megaman.png"),preload("res://sprites/turbotastic.jpg"),
 preload("res://sprites/SubwaySurfers.ogv")]
 
-
-#I want the size of the screen so that the images will only spawn on the window
-@onready var screenSize = get_viewport().get_visible_rect().size
-
-
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	initialize_window()
@@ -22,36 +17,23 @@ func _ready() -> void:
 	randomize()
 
 func initialize_window() -> void:
-	#Pulled it from a Godot tutorial. Reminder text to post a link in READ-ME
+	#Get size of window
 	var window : Window = get_window()
-	window.size = Vector2i(DisplayServer.screen_get_size() + Vector2i(1,1))
-	window.position = DisplayServer.screen_get_position()
-	
 	#1. Transparency setup
 	get_tree().get_root().set_transparent_background(true)
-	
 	#2. Window shape
 	#We want to remove the borders, so everything looks like it's floating
 	window.borderless = true
-	
 	#Keep the sprites in front of your browser and other stuff. For funsiess
 	window.always_on_top = true
-	
 	#Force borderless
 	window.unresizable = false
-	
 	#To set window passthrough
-	var pseudoWindow = PackedVector2Array(
-	[
-		Vector2(-1,-1),
-		Vector2(-1,1),
-		Vector2(1,-1),
-		Vector2(1,1)
-	])
-	DisplayServer.window_set_mouse_passthrough(pseudoWindow)
+	
+	print(window.size)
 
 
-func load_asset2():
+func load_asset() -> void:
 	#Sets a random asset and grabs the index
 	var randomAsset = assetScene.pick_random()
 	var index = assetScene.find(randomAsset)
@@ -62,7 +44,7 @@ func load_asset2():
 	#Instantiates the asset
 	var currentAsset = randomAsset.instantiate()
 	#Sets position of the asset
-	currentAsset.position = Vector2(randi_range(0,screenSize.x),randi_range(0,screenSize.y))
+	currentAsset.position = Vector2(0,get_window().size.y)
 	
 	add_child(currentAsset) #Someone needs to explain what this does to me I'm so lost
 	
@@ -75,4 +57,7 @@ func load_asset2():
 
 #On timeout, invoke load_asset
 func _on_timer_timeout() -> void:
-	load_asset2()
+	load_asset()
+
+func _process(_delta: float) -> void:
+	pass
